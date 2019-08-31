@@ -172,6 +172,31 @@ app.get('/BMap', function(req, res) {
     
 } )
 
+app.post('/sasara',function(req,res){
+    console.log(req.body.url);
+    var url = req.body.url;
+
+    request.post({url: url, json:true, options}, function (error, response, body) {
+        var token = body;
+        var murl = "https://api.mercadolibre.com/orders/search?seller="+ token.user_id +"&order.status=paid&access_token="+ token.access_token;
+
+        request.get({url: murl}, function (error, response, body) {
+            var orders = JSON.parse(body);
+            res.send(orders)
+        })
+    });	
+});
+
+app.post('/categories',function(req,res){
+    console.log(req.body.category);
+    var cat = req.body.category;
+    var url = 'https://api.mercadolibre.com/categories/' + cat
+    request.get({url: url}, function (error, response, body) {
+        var catName = JSON.parse(body);
+        res.send(catName.name)
+    })
+});	
+
 // ===== END ROUTING =====
 
 // Levanto el server en express en el puerto 8081.

@@ -18,6 +18,7 @@ const AppRoutes = () =>
             <Route exact path="/" component={Home} />
             <Route exact path="/bmap" component={BMap} />
             <Route exact path="/valoraciones" component={valoraciones} />
+            <Route exact path="/distexp" component={DistExp} />
             <Route component={Page404} />
         </Switch>
     </App>;

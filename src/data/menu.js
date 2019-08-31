@@ -18,5 +18,9 @@ export default [
     {
         title: 'Valoraciones',
         url: '/valoraciones'
+    },
+    {
+        title: 'Distrib por expo',
+        url: '/distexp'
     }
 ];
